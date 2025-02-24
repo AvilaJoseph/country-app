@@ -10,7 +10,7 @@ export const routes: Routes = [
 
     {
         path: 'country',
-        // component: 
+        loadChildren: ()=>import('./country/country.routes')
     },
 
     {

@@ -4,13 +4,13 @@ import { CountryTableComponent } from '../../components/country-table/country-ta
 import { CountrySearchInputComponent } from '../../components/country-search-input/country-search-input.component';
 
 @Component({
-  selector: 'app-by-country',
+  selector: 'app-by-region',
   standalone: true,
   imports: [
     CommonModule,
-    CountrySearchInputComponent,
+    CountryTableComponent
   ],
-  templateUrl: './by-country.component.html',
+  templateUrl: './by-region.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ByCountryComponent { }
+export class ByRegionComponent { }

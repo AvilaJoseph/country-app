@@ -11,5 +11,7 @@ import { CountryTableComponent } from '../../components/country-table/country-ta
   templateUrl: './by-capital-page.component.html',
 })
 export class ByCapitalPageComponent { 
-
+  onSearch(value:string){
+    console.log({value})
+  }
 }

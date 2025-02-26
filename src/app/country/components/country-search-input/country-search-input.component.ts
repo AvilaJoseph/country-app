@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'country-search-input',
@@ -11,7 +11,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountrySearchInputComponent {
-  onSearch(value: string) {
-    console.log({ value })
-  }
+  placeholder = input('Buscar');
+  value = output<string>();
 }

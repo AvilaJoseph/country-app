@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { RESTCountry } from '../../interfaces/rest-country.interface';
+import { Country } from '../../interfaces/country.interface';
 
 @Component({
   selector: 'country-table',
@@ -12,5 +12,5 @@ import { RESTCountry } from '../../interfaces/rest-country.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountryTableComponent {
-  countries = input<RESTCountry[]>([])
+  countries = input<Country[]>([])
  }

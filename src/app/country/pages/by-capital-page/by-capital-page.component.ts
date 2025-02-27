@@ -11,11 +11,14 @@ import { CountryService } from '../../services/country.service';
   ],
   templateUrl: './by-capital-page.component.html',
 })
-export class ByCapitalPageComponent { 
+export class ByCapitalPageComponent {
 
   countryService = inject(CountryService)
 
-  onSearch(value:string){
-    console.log({value})
+  onSearch(value: string) {
+    this.countryService.searchByCapital(value)
+      .subscribe((resp) => {
+        console.log(resp)
+      })
   }
 }

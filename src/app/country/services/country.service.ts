@@ -9,9 +9,9 @@ const API_URL='https://restcountries.com/v3.1'
 export class CountryService {
   private http = inject(HttpClient)
 
-  searchByCapital(query:string){
-    query = query.toLowerCase()
-
-    return this.http.get('${API_URL}/capital/${query}')
+  searchByCapital(query: string) {
+    query = query.toLowerCase();
+    return this.http.get(`${API_URL}/capital/${query}`); // Usa comillas invertidas
   }
+  
 }

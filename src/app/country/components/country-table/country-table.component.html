@@ -21,7 +21,11 @@
                 </td>
                 <td>{{ countries.name }}</td>
                 <td>{{countries.capital}}</td>
-                <td>{{ countries.population }}</td>
+                <td>
+                    <span class="badge badge-secundary">
+                        {{ countries.population | number }}
+                    </span>
+                </td>
                 <td>
                     <a class="link-primary cursor-pointer">Más Información</a>
                 </td>

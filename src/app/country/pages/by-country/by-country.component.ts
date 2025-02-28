@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CountryTableComponent } from '../../components/country-table/country-table.component';
 import { CountrySearchInputComponent } from '../../components/country-search-input/country-search-input.component';
@@ -9,7 +9,8 @@ import { CountrySearchInputComponent } from '../../components/country-search-inp
   imports: [
     CommonModule,
     CountrySearchInputComponent,
-    CountryTableComponent
+    CountryTableComponent,
+    DecimalPipe
   ],
   templateUrl: './by-country.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

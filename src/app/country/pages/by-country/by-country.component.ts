@@ -9,6 +9,7 @@ import { CountrySearchInputComponent } from '../../components/country-search-inp
   imports: [
     CommonModule,
     CountrySearchInputComponent,
+    CountryTableComponent
   ],
   templateUrl: './by-country.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -10,7 +10,6 @@ import { CountrySearchInputComponent } from '../../components/country-search-inp
     CommonModule,
     CountrySearchInputComponent,
     CountryTableComponent,
-    DecimalPipe
   ],
   templateUrl: './by-country.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -35,6 +35,7 @@ export class ByCapitalPageComponent {
         this.countries.set(countries)
       },
       error:(error)=>{
+        console.log(error)
         this.isLoading.set(false)
         this.countries.set([])
         this.isError.set(`No se encontraron resultados con esta capital: ${query}`)

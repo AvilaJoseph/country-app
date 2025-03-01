@@ -1,5 +1,6 @@
-<country-search-input 
-placeholder="Buscar por mi pais"
-(value)="onSearch($event)"
-/>
-<country-table [countries]="countries()"/>
+<country-search-input placeholder="Buscar por mi pais" (value)="onSearch($event)" />
+@if (isError()) {
+<h3>{{isError()}}</h3>
+}@else{
+<country-table [countries]="countries()" />
+}

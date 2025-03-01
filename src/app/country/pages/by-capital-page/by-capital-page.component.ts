@@ -22,14 +22,14 @@ export class ByCapitalPageComponent {
   isError = signal<string | null>(null)
   countries = signal<Country[]>([])
 
-  onSearch(value: string) {
+  onSearch(query: string) {
 
     if (this.isLoading()) return
 
     this.isLoading.set(true)
     this.isError.set(null)
 
-    this.countryService.searchByCapital(value).subscribe({
+    this.countryService.searchByCapital(query).subscribe({
       next:(countries)=>{
         this.isLoading.set(false)
         this.countries.set(countries)
@@ -37,7 +37,7 @@ export class ByCapitalPageComponent {
       error:(error)=>{
         this.isLoading.set(false)
         this.countries.set([])
-        this.isError.set('No se encontraron resultados con esta capital ${query}')
+        this.isError.set(`No se encontraron resultados con esta capital: ${query}`)
       }
     })
   }

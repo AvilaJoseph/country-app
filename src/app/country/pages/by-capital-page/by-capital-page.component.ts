@@ -1,10 +1,11 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, resource, signal } from '@angular/core';
 import { CountrySearchInputComponent } from '../../components/country-search-input/country-search-input.component';
 import { CountryTableComponent } from '../../components/country-table/country-table.component';
 import { CountryService } from '../../services/country.service';
 import { RESTCountry } from '../../interfaces/rest-country.interface';
 import { CountryMapper } from '../../mappers/country.mapper';
 import { Country } from '../../interfaces/country.interface';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-by-capital-page',
@@ -16,30 +17,43 @@ import { Country } from '../../interfaces/country.interface';
 })
 export class ByCapitalPageComponent {
 
+  query = signal('')
   countryService = inject(CountryService)
 
-  isLoading = signal(false)
-  isError = signal<string | null>(null)
-  countries = signal<Country[]>([])
+  countryResources = resource({
+    request: () => ({query: this.query()}),
+    loader: async({ request })=>{
+      if(!request.query) return []
 
-  onSearch(query: string) {
+      return await firstValueFrom(
+        this.countryService.searchByCapital(request.query)
+      )
+      
+    }
+  })
 
-    if (this.isLoading()) return
+  // isLoading = signal(false)
+  // isError = signal<string | null>(null)
+  // countries = signal<Country[]>([])
 
-    this.isLoading.set(true)
-    this.isError.set(null)
+  // onSearch(query: string) {
 
-    this.countryService.searchByCapital(query).subscribe({
-      next:(countries)=>{
-        this.isLoading.set(false)
-        this.countries.set(countries)
-      },
-      error:(error)=>{
-        console.log(error)
-        this.isLoading.set(false)
-        this.countries.set([])
-        this.isError.set(`No se encontraron resultados con esta capital: ${query}`)
-      }
-    })
-  }
+  //   if (this.isLoading()) return
+
+  //   this.isLoading.set(true)
+  //   this.isError.set(null)
+
+  //   this.countryService.searchByCapital(query).subscribe({
+  //     next:(countries)=>{
+  //       this.isLoading.set(false)
+  //       this.countries.set(countries)
+  //     },
+  //     error:(error)=>{
+  //       console.log(error)
+  //       this.isLoading.set(false)
+  //       this.countries.set([])
+  //       this.isError.set(`No se encontraron resultados con esta capital: ${query}`)
+  //     }
+  //   })
+  // }
 }

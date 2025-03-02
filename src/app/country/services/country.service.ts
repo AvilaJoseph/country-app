@@ -22,11 +22,10 @@ export class CountryService {
         map(restCountries => CountryMapper.mapRestCountrytoCountryArray(restCountries)),
         catchError(error => {
           console.log('Error fetching:', error);
-          return throwError(() => 
+          return throwError(() =>
             new Error(`No se encontraron resultados con esta capital: ${query}`)
           );
         })
       );
-  }  
-
+  }
 }

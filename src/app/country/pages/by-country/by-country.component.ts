@@ -3,7 +3,8 @@ import { ChangeDetectionStrategy, Component, inject, resource, signal } from '@a
 import { CountryTableComponent } from '../../components/country-table/country-table.component';
 import { CountrySearchInputComponent } from '../../components/country-search-input/country-search-input.component';
 import { CountryService } from '../../services/country.service';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, of } from 'rxjs';
+import { rxResource } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-by-country',
@@ -21,15 +22,25 @@ export class ByCountryComponent {
   query = signal('')
   countryService = inject(CountryService)
 
-  CountryResources = resource({
+  
+  CountryResources = rxResource({
     request: ()=>({query: this.query()}),
-    loader: async({request})=>{
-      if(!request.query) return []
+    loader: ({request})=>{
+      if(!request.query) return of([])
 
-      return await firstValueFrom(
-        this.countryService.searchByCountry(request.query)
-      )
+      return this.countryService.searchByCountry(request.query)
     }
   })
+
+  // CountryResources = resource({
+  //   request: ()=>({query: this.query()}),
+  //   loader: async({request})=>{
+  //     if(!request.query) return []
+
+  //     return await firstValueFrom(
+  //       this.countryService.searchByCountry(request.query)
+  //     )
+  //   }
+  // })
 
 }

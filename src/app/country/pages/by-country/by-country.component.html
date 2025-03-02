@@ -1,4 +1,9 @@
 <country-search-input 
-placeholder="Buscar por mi pais"
-/>
-<country-table [countries]="[]"/>
+placeholder="Buscar por mi pais" 
+(value)="query.set($event)" />
+
+@if (CountryResources.error()) {
+<h3>{{CountryResources.error()}}</h3>
+}@if (CountryResources.hasValue() ){
+<country-table [countries]="CountryResources.value()!" />
+}

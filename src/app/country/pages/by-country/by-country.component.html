@@ -2,8 +2,9 @@
 placeholder="Buscar por mi pais" 
 (value)="query.set($event)" />
 
-@if (CountryResources.error()) {
-<h3>{{CountryResources.error()}}</h3>
-}@if (CountryResources.hasValue() ){
-<country-table [countries]="CountryResources.value()!" />
-}
+<country-table 
+[countries]="CountryResources.value() ?? []"
+[errorMessage]="CountryResources.error()"
+[isLoading]="CountryResources.isLoading()"
+[isEmpty]="CountryResources.value()?.length === 0"
+/>

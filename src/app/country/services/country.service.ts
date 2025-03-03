@@ -50,7 +50,7 @@ export class CountryService {
       catchError(error => {
         console.log('Error fetching:', error);
         return throwError(() =>
-          new Error(`No se encontraron resultados con este país: ${code}`)
+          new Error(`No se pudo encontrar informacion de este país: ${code}`)
         );
       })
     );

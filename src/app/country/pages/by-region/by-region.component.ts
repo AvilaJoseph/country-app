@@ -8,7 +8,7 @@ import { CountrySearchInputComponent } from '../../components/country-search-inp
   standalone: true,
   imports: [
     CommonModule,
-    CountryTableComponent
+    // CountryTableComponent
   ],
   templateUrl: './by-region.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

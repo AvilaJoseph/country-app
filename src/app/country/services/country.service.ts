@@ -44,7 +44,7 @@ export class CountryService {
   searchCountrybyAlphaCode(code: string){
     return this.http.get<RESTCountry[]>(`${API_URL}/alpha/${code}`).pipe(
       map((resp) => CountryMapper.mapRestCountrytoCountryArray(resp)),
-      map(countries => countries.at), // THIS IS THE PROBLEM
+      map(countries => countries.at(0)),
       delay(2000),
       catchError(error => {
         console.log('Error fetching:', error);

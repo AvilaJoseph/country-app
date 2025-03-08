@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Location } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-not-found',
@@ -6,4 +7,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './not-found.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NotFoundComponent { }
+export class NotFoundComponent { 
+
+  location = inject(Location)
+
+  goBack() {
+    this.location.back();
+  }
+
+}

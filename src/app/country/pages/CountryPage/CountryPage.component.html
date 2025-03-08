@@ -2,6 +2,10 @@
 <app-not-found/>
 }
 
+@if(countryResources.isLoading()) {
+<h1 class="text-3xl">Cargando...</h1>
+}
+
 <!-- -->
 @if (countryResources.hasValue()) {
 <h3>Nombre: {{countryResources.value()!.name}}</h3>

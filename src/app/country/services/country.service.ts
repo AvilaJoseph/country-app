@@ -13,8 +13,6 @@ const API_URL = 'https://restcountries.com/v3.1'
 export class CountryService {
   private http = inject(HttpClient)
 
-
-
   searchByCapital(query: string): Observable<Country[]> {
     query = query.toLowerCase();
     return this.http.get<RESTCountry[]>(`${API_URL}/capital/${query}`)
@@ -46,7 +44,7 @@ export class CountryService {
   searchCountrybyAlphaCode(code: string){
     return this.http.get<RESTCountry[]>(`${API_URL}/alpha/${code}`).pipe(
       map((resp) => CountryMapper.mapRestCountrytoCountryArray(resp)),
-      map(countries => countries.at),
+      map(countries => countries.at), // THIS IS THE PROBLEM
       delay(2000),
       catchError(error => {
         console.log('Error fetching:', error);

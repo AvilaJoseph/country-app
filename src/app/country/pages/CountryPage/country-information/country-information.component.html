@@ -1,7 +1,9 @@
 <section class="mx-10">
-    <h1 class="text-3xl">{{ country().name }}</h1>
+    <h1 class="text-3xl py-4">{{ country().name }}</h1>
     <h1 class="text-xl font-thin">Población: {{ country().population | number }}</h1>
-    <h1 class="text-xl font-thin">{{ country().idioma }}</h1>
+    <h1 class="text-xl font-thin">Idioma: {{ country().idioma }}</h1>
+    <h1 class="text-xl font-thin">Capital: {{ country().capital }}</h1>
+    <h1 class="text-xl font-thin">Código: {{ country().cca2 }}</h1>
 
     <div class="mt-4 flex space-x-4 items-center p-8">
         <img alt="{{country().name}}" src="{{country().flagSvg}}" />

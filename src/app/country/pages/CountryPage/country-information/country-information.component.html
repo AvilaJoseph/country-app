@@ -1,6 +1,16 @@
-<section class="mx-10">
-    <h1 class="text-3xl">{{country().name}}</h1>
-    <h1 class="text-xl font-thin">
-    Poblacióm: {{country().population | number}}</h1>
-    <h2>{{country().idioma}}</h2>
+<section class="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div class="flex items-center space-x-4">
+        <img :src="country().flagSvg" :alt="country().name" class="w-16 h-16 rounded-full shadow-md">
+        <h1 class="text-4xl font-semibold">{{ country().name }}</h1>
+    </div>
+    
+    <div class="mt-4 space-y-2 text-lg text-gray-700">
+        <p><span class="font-medium">Capital:</span> {{ country().capital }}</p>
+        <p><span class="font-medium">Población:</span> {{ country().population | number }}</p>
+        <p><span class="font-medium">Idioma:</span> {{ country().idioma }}</p>
+        <p class="flex items-center">
+            <span class="font-medium mr-2">Código:</span> 
+            <span class="px-2 py-1 bg-gray-200 text-gray-800 rounded-md">{{ country().cca2 }}</span>
+        </p>
+    </div>
 </section>

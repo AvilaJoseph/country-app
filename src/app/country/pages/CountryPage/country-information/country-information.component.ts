@@ -1,9 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { Country } from '../../../interfaces/country.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'country-information-app',
-  imports: [],
+  imports: [
+    CommonModule
+  ],
   templateUrl: './country-information.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

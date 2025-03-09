@@ -14,4 +14,8 @@ export class CountryInformationComponent {
 
   country = input.required<Country>()
 
+  currentYear = (()=>{
+    return new Date().getFullYear();
+  })
+
  }

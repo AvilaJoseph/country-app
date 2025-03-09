@@ -9,7 +9,8 @@ export class CountryMapper {
             flag: restCountry.flag,
             flagSvg: restCountry.flags.svg,
             name: restCountry.translations['spa'].common ?? 'No spanish name',
-            population: restCountry.population
+            population: restCountry.population,
+            idioma: Object.values(restCountry.languages).join(', ') // Aquí se transforma en string
         }
     }
     static mapRestCountrytoCountryArray(restCounrtries: RESTCountry[]): 

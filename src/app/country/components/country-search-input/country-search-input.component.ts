@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
 
 @Component({
   selector: 'country-search-input',
@@ -13,4 +13,6 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 export class CountrySearchInputComponent {
   placeholder = input('Buscar');
   value = output<string>();
+
+  inputValue = signal<string>('');
 }

@@ -15,13 +15,14 @@ export class CountrySearchInputComponent {
   value = output<string>();
 
   inputValue = signal<string>('');
+  debouceTime = input(500);
 
   debouceEffect = effect((onCleanup) => {
     const value = this.inputValue();
 
     const timeout = setTimeout(() => {
       this.value.emit(value);
-    }, 500);
+    }, this.debouceTime());
 
     onCleanup(()=>{
       clearInterval(timeout);

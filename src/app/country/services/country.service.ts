@@ -17,6 +17,10 @@ export class CountryService {
   searchByCapital(query: string): Observable<Country[]> {
     query = query.toLowerCase();
 
+    if(this.queryChacheCapital.has(query)){
+      return of(this.queryChacheCapital.get(query)!);
+    }
+
     return this.http.get<RESTCountry[]>(`${API_URL}/capital/${query}`)
       .pipe(
         map(restCountries => CountryMapper.mapRestCountrytoCountryArray(restCountries)),
